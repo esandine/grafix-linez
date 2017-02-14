@@ -7,7 +7,9 @@ public class Driver{
 	Grafix g = new Grafix(500,500);
 	System.out.println("No more newline characters!");
 	Pixel c = new Pixel(50,50,50);
-	g.bresLine(0,0,100,100,c);
+	g.bresLine1(0,0,100,100,c);
+	g.bresLine1(0,0,100,50,c);
+	g.bresLine2(0,0,50,100,c);
 	g.write("test.ppm");
     }
 }

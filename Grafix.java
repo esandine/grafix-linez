@@ -65,7 +65,8 @@ public class Grafix{
 	    }
 	}
     }
-    public void bresLine(int xi, int yi, int xf, int yf, Pixel color){
+    //bresLine1 draws the line in quadrant I using bresenham's line algorithm
+    public void bresLine1(int xi, int yi, int xf, int yf, Pixel color){
 	int x = xi;
 	int y = yi;
 	int a = 2*(yf-yi);
@@ -81,6 +82,25 @@ public class Grafix{
 	    d+=a;
 	}
     }
+    //bresLine2 draws the line in quadrant I using bresenham's line algorithm
+    //it uses x=my+b as starting equation, reflecting the line
+    public void bresLine2(int xi, int yi, int xf, int yf, Pixel color){
+        int x = xi;
+        int y = yi;
+        int a = 2*(xf-xi);
+        int b = 2*(yi-yf);
+        int d=a+yi-yf;
+        while(y<=yf){
+            plot(x,y,color);
+            if(d>0){
+                x++;
+                d+=b;
+            }
+            y++;
+            d+=a;
+        }
+    }
+
     //Write function copies the pixels to image file
     public void write(String name){
 	try{

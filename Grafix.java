@@ -83,7 +83,7 @@ public class Grafix{
 	}
     }
     //bresLine2 draws the line in quadrant I using bresenham's line algorithm
-    //it uses x=my+b as starting equation, reflecting the line
+    //it uses x=my+b as starting equation, reflecting the line about y=x
     public void bresLine2(int xi, int yi, int xf, int yf, Pixel color){
         int x = xi;
         int y = yi;
@@ -94,6 +94,44 @@ public class Grafix{
             plot(x,y,color);
             if(d>0){
                 x++;
+                d+=b;
+            }
+            y++;
+            d+=a;
+        }
+    }
+
+    //bresLine8 draws the line in quadrant I using bresenham's line algorithm
+    //it uses y=-(mx+b) as starting equation, reflecting the line
+    public void bresLine8(int xi, int yi, int xf, int yf, Pixel color){
+        int x = xi;
+        int y = yi;
+        int a = 2*(yi-yf);
+        int b = 2*(xi-xf);
+        int d=a+xi-xf;
+        while(x<=xf){
+            plot(x,y,color);
+            if(d>0){
+                y--;
+                d+=b;
+            }
+            x++;
+            d+=a;
+        }
+    }
+
+    //bresLine7 draws the line in quadrant I using bresenham's line algorithm
+    //it uses x=-(my+b) as starting equation, reflecting the line                                                                                                        
+    public void bresLine7(int xi, int yi, int xf, int yf, Pixel color){
+        int x = xi;
+        int y = yi;
+        int a = 2*(xi-xf);
+        int b = 2*(yi-yf);
+        int d=a+yi-yf;
+        while(y<=yf){
+            plot(x,y,color);
+            if(d>0){
+                x--;
                 d+=b;
             }
             y++;

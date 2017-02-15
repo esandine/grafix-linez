@@ -121,7 +121,8 @@ public class Grafix{
     }
 
     //bresLine7 draws the line in quadrant I using bresenham's line algorithm
-    //it uses x=-(my+b) as starting equation, reflecting the line                                                                                                        
+    //it uses x=-(my+b) as starting equation, reflecting the line
+    //this is kinda unintuitive but reflecting the equation is funner
     public void bresLine7(int xi, int yi, int xf, int yf, Pixel color){
         int x = xi;
         int y = yi;

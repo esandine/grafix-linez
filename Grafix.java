@@ -126,20 +126,53 @@ public class Grafix{
     public void bresLine7(int xi, int yi, int xf, int yf, Pixel color){
         int x = xi;
         int y = yi;
-        int a = 2*(xi-xf);
-        int b = 2*(yi-yf);
-        int d=a+yi-yf;
-        while(y<=yf){
+	int a = 2*(xf-xi);
+        int b = 2*(yf-yi);
+        int d=a+yf-yi;
+        while(y>=yf){
             plot(x,y,color);
             if(d>0){
-                x--;
+                x++;
                 d+=b;
             }
-            y++;
+            y--;
             d+=a;
         }
     }
+    //bresLine is a wrapper for all of the other functions
+    public void bresLine(int xi, int yi, int xf, int yf, Pixel color){
+	int temp;
+	//swaps to take care of octants 3-6
+	if(xi>xf){
+	    temp=xi;
+	    xi=xf;
+	    xf=temp;
+	    temp=yi;
+	    yi=yf;
+	    yf=temp;
+	}
+	//checks if quad I or quad IV
+	if(yf>yi){
+	    //checks oct II or oct I
+	    if(yf-yi>xf-xi){
+		bresLine2(xi,yi,xf,yf,color);
+		System.out.println("bres2");
+	    }else{
+		bresLine1(xi,yi,xf,yf,color);
+		System.out.println("bres1");
+	    }
+	}else{
+	    //checks if oct VII or oct VIII
+	    if(yi-yf>xf-xi){
+		bresLine7(xi,yi,xf,yf,color);
+		System.out.println("bres7");
+	    }else{
+		bresLine8(xi,yi,xf,yf,color);
+		System.out.println("bres8");
+	    }
+	}
 
+    }
     //Write function copies the pixels to image file
     public void write(String name){
 	try{
@@ -149,8 +182,9 @@ public class Grafix{
 	    FileWriter w = new FileWriter(f, true);
 	    w.write("P3 "+getWidth()+" "+getHeight()+" 255\n");
 	    for(int i = 0; i< getWidth(); i++){
-		for(int j = 0; j< getHeight(); j++){
-		    w.write(data[i][j].toString());
+		for(int j = 0; j<getHeight(); j++){
+		    //the [j][bleh] stuff serves to rotate the coordinates
+		    w.write(data[j][getWidth()-1-i].toString());
 		}
 	    }
 	    w.close();

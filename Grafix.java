@@ -156,19 +156,15 @@ public class Grafix{
 	    //checks oct II or oct I
 	    if(yf-yi>xf-xi){
 		bresLine2(xi,yi,xf,yf,color);
-		System.out.println("bres2");
 	    }else{
 		bresLine1(xi,yi,xf,yf,color);
-		System.out.println("bres1");
 	    }
 	}else{
 	    //checks if oct VII or oct VIII
 	    if(yi-yf>xf-xi){
 		bresLine7(xi,yi,xf,yf,color);
-		System.out.println("bres7");
 	    }else{
 		bresLine8(xi,yi,xf,yf,color);
-		System.out.println("bres8");
 	    }
 	}
 

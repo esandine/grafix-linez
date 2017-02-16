@@ -177,10 +177,10 @@ public class Grafix{
 	    f.createNewFile();
 	    FileWriter w = new FileWriter(f, true);
 	    w.write("P3 "+getWidth()+" "+getHeight()+" 255\n");
-	    for(int i = 0; i< getWidth(); i++){
-		for(int j = 0; j<getHeight(); j++){
+	    for(int i = 0; i< getHeight(); i++){
+		for(int j = 0; j<getWidth(); j++){
 		    //the [j][bleh] stuff serves to rotate the coordinates
-		    w.write(data[j][getWidth()-1-i].toString());
+		    w.write(data[j][getHeight()-1-i].toString());
 		}
 	    }
 	    w.close();

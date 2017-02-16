@@ -4,23 +4,18 @@ import java.io.IOException;
 
 public class Driver{
     public static void main(String[] args){
-	Grafix g = new Grafix(500,500);
-	Pixel c = new Pixel(50,50,150);
-	g.bresLine(0,0,100,100,c);
-	System.out.println("Should be bres1");
-	g.bresLine(0,0,100,50,c);
-	System.out.println("Should be bres1");
-	g.bresLine(0,0,50,100,c);
-	System.out.println("Should be bres2");
-	g.bresLine(100,50,200,0,c);
-	System.out.println("Should be bres8");
-	g.bresLine(50,100,0,200,c);
-	System.out.println("Should be bres7");
-	g.bresLine(100,100,200,100,c);
-	System.out.println("Should be bres1");
-	g.bresLine(100,100,100,200,c);
-	System.out.println("Should be bres2");
-	g.plot(100,300,c);
+	Grafix g = new Grafix(300,500);
+	Pixel c = new Pixel(50,150,150);
+	g.bresLine(50,150,50,350,c);
+	g.bresLine(50,150,75,100,c);
+	g.bresLine(50,350,75,400,c);
+	g.bresLine(75,100,100,75,c);
+	g.bresLine(75,400,100,425,c);
+	g.bresLine(100,425,150,450,c);
+	g.bresLine(100,75,150,50,c);
+	g.bresLine(150,50,250,50,c);
+	g.bresLine(150,450,250,450,c);
+	g.bresLine(50,250,200,250,c);
 	g.write("test.ppm");
     }
 }
